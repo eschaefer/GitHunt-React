@@ -6,7 +6,7 @@ import FeedEntry from './FeedEntry';
 const Feed = ({ entries = [], loggedIn, onVote, onLoadMore }) => {
   if (entries && entries.length) {
     return (
-      <div> {
+      <div className="container"> {
         entries.map(entry => (
           entry ? <FeedEntry
             key={entry.repository.full_name}
