@@ -2,11 +2,9 @@ import React from 'react';
 import { Route, Switch, withRouter } from 'react-router';
 import routes from './index';
 
-let ReactGA = {};
+const ReactGA = process.browser ? require('react-ga') : {};
 
 if (process.browser) {
-  ReactGA = require('react-ga'); //eslint-disable-line
-
   // Initialize Analytics
   ReactGA.initialize('UA-74643563-4');
 }
