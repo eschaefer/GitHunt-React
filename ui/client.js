@@ -1,8 +1,6 @@
 import React from 'react';
-import * as ReactGA from 'react-ga';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { Route } from 'react-router';
 import { ApolloProvider } from 'react-apollo';
 
 // Polyfill fetch
@@ -20,23 +18,10 @@ const client = createApolloClient({
   connectToDevTools: true,
 });
 
-// Initialize Analytics
-ReactGA.initialize('UA-74643563-4');
-
-function logPageView() {
-  ReactGA.set({ page: window.location.pathname });
-  ReactGA.pageview(window.location.pathname);
-
-  return null;
-}
-
 render((
   <ApolloProvider client={client}>
     <BrowserRouter>
-      <div>
-        <Route path="/" component={logPageView} />
-        <Layout />
-      </div>
+      <Layout />
     </BrowserRouter>
   </ApolloProvider>
 ), document.getElementById('content'));
