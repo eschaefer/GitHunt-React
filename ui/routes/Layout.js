@@ -23,9 +23,11 @@ const Layout = () =>
   <div>
     <Route path="/" component={logPageView} />
     <Navbar />
-    <Switch>
-      {routes.map(route => <Route key={`route-${route.name}`} {...route} />)}
-    </Switch>
+    <div className="container">
+      <Switch>
+        {routes.map(route => <Route key={`route-${route.name}`} {...route} />)}
+      </Switch>
+    </div>
   </div>;
 
 export default Layout;
