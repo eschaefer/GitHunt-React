@@ -1,6 +1,7 @@
 import React from 'react';
-import { Route, Switch, withRouter } from 'react-router';
+import { Route, Switch } from 'react-router';
 import routes from './index';
+import Navbar from '../components/Navbar';
 
 const ReactGA = process.browser ? require('react-ga') : {};
 
@@ -18,13 +19,13 @@ function logPageView() {
   return null;
 }
 
-const Layout = () => (
+const Layout = () =>
   <div>
     <Route path="/" component={logPageView} />
+    <Navbar />
     <Switch>
       {routes.map(route => <Route key={`route-${route.name}`} {...route} />)}
     </Switch>
-  </div>
-);
+  </div>;
 
-export default withRouter(Layout);
+export default Layout;

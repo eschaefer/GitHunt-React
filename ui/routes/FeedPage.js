@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import { withRouter } from 'react-router';
-import Navbar from '../components/Navbar';
 
 import Feed from '../components/Feed';
 import Loading from '../components/Loading';
@@ -20,7 +19,6 @@ class FeedPage extends React.Component {
 
     return (
       <div>
-        <Navbar />
         <Feed
           entries={feed || []}
           loggedIn={!!currentUser}
