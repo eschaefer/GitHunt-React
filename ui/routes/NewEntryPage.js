@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
-import { browserHistory } from 'react-router';
+import { Redirect } from 'react-router';
 
 import SUBMIT_REPOSITORY_MUTATION from '../graphql/SubmitRepository.graphql';
 
@@ -21,7 +21,7 @@ class NewEntryPage extends React.Component {
 
     return submit(repoFullName).then((res) => {
       if (!res.errors) {
-        browserHistory.push('/feed/new');
+        this.setState({ redirect: true });
       } else {
         this.setState({ errors: res.errors });
       }
@@ -29,7 +29,12 @@ class NewEntryPage extends React.Component {
   }
 
   render() {
-    const { errors } = this.state;
+    const { errors, redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to="/feed/new" />;
+    }
+
     return (
       <div>
         <h1>Submit a repository</h1>
